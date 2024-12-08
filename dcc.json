@@ -1,0 +1,40 @@
+{
+    "identity_attributes": [
+        {
+            "label": "full_name",
+            "value": "TOM\u00c1S JOS\u00c9 CARDOSO MATOS",
+            "commitment": "c5e70ccd8a124a319683b76b35f8ffb1a9d1f63be0621ccd55f369e7229aecdf"
+        },
+        {
+            "label": "id_number",
+            "value": "BI159333806",
+            "commitment": "d509d34000f3b510da12cdb2200ba170d88357ad0e976a490651852088f8979a"
+        },
+        {
+            "label": "country",
+            "value": "PT",
+            "commitment": "a7dd7421d9d4404ff9b1454fa7c318f7a7297d84bf3a0f0fd73a18b1246861a6"
+        },
+        {
+            "label": "organization",
+            "value": "Cart\u00e3o de Cidad\u00e3o",
+            "commitment": "bf12ddfc2e1cec0b473dd6efcd1cf87d1f4cabb43b794bbf7eb58ccf12b837da"
+        },
+        {
+            "label": "birth_date",
+            "value": "2003-09-23 12:00:00+00:00",
+            "commitment": "8270259ac97f4ca75f6fe8d008b62cc336957262647a2ec2b3b59c771158ec2d"
+        }
+    ],
+    "digest_function": "SHA-256",
+    "public_key": {
+        "value": "-----BEGIN PUBLIC KEY-----\nMIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEArRAu5xmA9DX72CcHBv8K\nmdVEiRgy6Ch+YxPad4F1t1AtwAE+/FfAJ3AUl15Agq0WNg5l9AhuXQOl2J4TnFZx\nFCAwE2yVu7FqHBv8e9lduNhaKCbh7d+sNCprK6zruIo8S5SKTeF0UwLTQMo10iV2\nvCe3JJPgOu+ej5QtJgdH3l17h7D8nK54M3eWK+41nUvyXWZLmE/bbzwS+n+QzPwp\n2H3sv3hCN1/R/EjF0ktAxVsRsXZu17oihyOGPkRTl8hDVA0YBm20Ie0tlvXRanyt\nQ1LF7vD7/JJ9RQ4CecNV1ytFczz4vWh126uDfWhsH0phgX8uu2yVELNfTv4KaQoH\nNgE0lWzdtswbNFEZnOD2ru/wC3BiVG90SPmXkKstNc3pA6/dyU759i29CDg275qx\n6FJf+eYe07Xh/HhfsjecFhjQMKPU7o7kLkVliikB+ls5cAjk+ADTqfah5RC2jj9L\nFWdQxFzwqNIODLKms0tUJSb/VgrQ+CHIRx+WHDqbcrDNAgMBAAE=\n-----END PUBLIC KEY-----\n",
+        "key_size": 3072
+    },
+    "issuer_signature": {
+        "value": "872c2b0fce80a3543d853362dc085b95d85026aa8cb6ccb1fead6bdcd0dae1968f76f2c234d447d0ab5e11329f3bd17016da19c698157de6d235df4f9d1e10830b75d27065d78123d9207422f6c78f68f8c8a3df4e56b1e9127d39832e4345c087eb7f590b2c5eadbf5772806035b87a9ec0f647201139584200fef2358a1a42eacbac5e42073f92a34f65ed4a2fb9a12c8d901e3771d64ac60ef572214f32cdc8f445d3815510878cc4b9718da5bd7f2380620c44231680dd2227a0ae8197ed10fa6349c1b0ed6e6f2fb7d801a46ede947f2dada26ca30e27da2b66b1a19cce11b59d884ff0352a5b429fef6eb671876d54345dce3dc2402257aff61ae3c1b4",
+        "timestamp": "2024-12-08T02:19:44.390994+00:00",
+        "description": "Issuer signature using SHA-256 and RSA-PKCS1v1.5",
+        "certificate": "-----BEGIN CERTIFICATE-----\nMIIDbzCCAlegAwIBAgIUWL1nwjuPxAjmyka1YHIWhboS3EUwDQYJKoZIhvcNAQEL\nBQAwZzELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcM\nDVNhbiBGcmFuY2lzY28xEzARBgNVBAoMCk15IENvbXBhbnkxFjAUBgNVBAMMDW15\nY29tcGFueS5jb20wHhcNMjQxMjA2MjMwMDIwWhcNMjUxMjA2MjMwMDIwWjBnMQsw\nCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZy\nYW5jaXNjbzETMBEGA1UECgwKTXkgQ29tcGFueTEWMBQGA1UEAwwNbXljb21wYW55\nLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALS7Kv5QPMkzFDIa\n2PtaZ5njpqLGfu9ucV3/dFYYVTEsDeueS6kh1DoIwYIcWTvuGzOxsXDtXgUtOBOD\nOCjKDKohC/Nj8O5HNX3o6ic3XSPgmVI/ysQuwTktczEs7PvkA9cK+v+Idzb3leY+\nces6yJadLQpCCQ6AbtMJ44PtmOAC3oa+ANDn6KmZCdW+6qncYcxolw0EShIrRGlg\n7s3QM29ffrBZm3B5mfhpWK8mxxvKWhtMURx3lR8TZt/ada/B2vZthGWua2rN7HJG\n63kA3fqrMB+lhzRSCPakkDVg+fWs41QjSzkdCkoNW45/h0IeqmWztjo0tyBY/6EF\n8/qxnyECAwEAAaMTMBEwDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOC\nAQEACkVoW/P6bQ7cpfsOIkySvuzEEn0VAQFjQzy8HIEkSDU9BlD4Ph+W/cuBfALl\nPzkf6wR4zw+n5IyyFSHAzvVpw33v1HBUSEbvFsECK2L7tDVpTrRPpG7tG3lxMzPP\ntPJJhHWDIuN/qSHgKnsPpBIo/JxYAN9SMLTkxllAXF/7W06e2EQmmNvaqaxcSmRy\n3K9a7rVOSKlVq9Fctth8cRUe1PIRvNsilXApGE5d5tq8JS4n5yF3xXOHgfQdvarQ\nWXMwXP82Bwgy4Qmmj8wcEump/PzTF58LrwHqlYRD6OzPVY4LoKA0LoI/qgE/Nx/F\nKGu1AeYpNEmJAeo0Q9qGOoQAlA==\n-----END CERTIFICATE-----\n"
+    }
+}
