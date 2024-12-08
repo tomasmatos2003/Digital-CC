@@ -128,27 +128,39 @@ def sign_with_cc(data_to_sign):
 
 
 def main_menu():
+
+    dcc_data = {}
     while True:
+
         print("\n==== check_dcc Application ====")
-        print("1. Validate issuer_signature")
-        print("2. Validate owner_signature")
-        print("3. Validate commitments")
-        print("4. Exit")
+        print("1. Load dcc min")
+        print("2. Validate issuer_signature")
+        print("3. Validate owner_signature")
+        print("4. Validate commitments")
+        print("5. Exit")
         choice = input("Choose an option (1-4): ")
-
-        try:
-            json_name = "dcc_min.json" #input("     Load a DCC (json): ").strip()
-            with open(json_name, 'r') as json_file:
-                dcc_data = json.load(json_file)
-        except FileNotFoundError:
-            print(f"File '{json_name}' not found. Please try again.")
-        except json.JSONDecodeError:
-            print("Failed to parse JSON. Ensure the file is a valid DCC JSON.")
-        except Exception as e:
-            print(f"Error during minimal DCC generation: {e}")
           
-
         if choice == "1":
+
+            try:
+                json_name = input("-- Load a DCC (json): ").strip()
+                #json_name = "dcc_min.json" 
+                with open(json_name, 'r') as json_file:
+                    dcc_data = json.load(json_file)
+            except FileNotFoundError:
+                print(f"File '{json_name}' not found. Please try again.")
+            except json.JSONDecodeError:
+                print("Failed to parse JSON. Ensure the file is a valid DCC JSON.")
+                
+            except Exception as e:
+                print(f"Error during minimal DCC generation: {e}")
+                
+    
+        elif choice == "2":
+            if dcc_data == {}:
+                print("Need to load dcc_min!!")
+                continue
+
           
             issuer_sign = dcc_data["issuer_signature"]["value"]
             issuer_cert = dcc_data["issuer_signature"]["certificate"]
@@ -161,7 +173,10 @@ def main_menu():
             else:
                 print("DCC validation failed or issuer signature is invalid.")   
            
-        elif choice == "2":
+        elif choice == "3":
+            if dcc_data == {}:
+                print("Need to load dcc_min!!")
+                continue
 
             signature = dcc_data["owner_signature"]["value"]
             public_key_data = dcc_data["public_key"]["value"]
@@ -176,7 +191,12 @@ def main_menu():
             else:
                 print("Signature verified successfully. Data integrity intact.")
         
-        elif choice == "3":
+        elif choice == "4":
+
+            if dcc_data == {}:
+                print("Need to load dcc_min!!")
+                continue
+
             commitments = dcc_data["commitment"]
             attributes = dcc_data["identity_attributes"]
 
@@ -199,7 +219,7 @@ def main_menu():
 
 
 
-        elif choice == "4":
+        elif choice == "5":
             print("Exiting the program. Goodbye!")
             sys.exit(0)
         else:
