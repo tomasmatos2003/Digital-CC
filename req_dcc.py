@@ -59,6 +59,21 @@ def create_dcc(cc_data):
             "commitment": commitment
         })
 
+
+    not_before_mask = derive_mask(pseudo_random_password, "val_not_before")
+    commitments.append({
+        "label":"val_not_before",
+        "value": cc_data["validity"]["not_before"],
+        "commitment": create_commitment("val_not_before", cc_data["validity"]["not_before"], not_before_mask)
+    })
+
+    not_after_mask = derive_mask(pseudo_random_password, "val_not_after")
+    commitments.append({
+        "label":"val_not_after",
+        "value": cc_data["validity"]["not_after"],
+        "commitment": create_commitment("val_not_after", cc_data["validity"]["not_after"], not_after_mask)
+    })
+
     # Generate the DCC structure
     dcc = {
         "identity_attributes": commitments,
@@ -264,6 +279,9 @@ def main_menu():
         if choice == "1":
             try:
                 cc_data = get_portuguese_cc_data()
+                if cc_data == None:
+                    continue
+
                 dcc = create_dcc(cc_data)
                 message = {"type": "request", "dcc": dcc}
                 
