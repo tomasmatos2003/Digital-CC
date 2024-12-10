@@ -152,8 +152,7 @@ def main_menu():
                         "timestamp" : timestamp,
                         "description": "RSA with SHA-1 PKCS#1 v1.5, using the Citizen Card private key for signing."  
                     }
-                    # print(dcc_min)
-                    with open('dcc_min.json', 'w') as json_file:
+                    with open(f'dcc_min.json', 'w') as json_file:
                         json.dump(dcc_min, json_file, indent=4)
 
 

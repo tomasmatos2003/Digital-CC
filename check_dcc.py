@@ -13,6 +13,9 @@ from datetime import datetime, timezone
 from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives.hashes import SHA256
 from cryptography.hazmat.primitives.serialization import load_pem_public_key
+from PIL import Image
+import io
+import base64
 
 
 lib = '/usr/local/lib/libpteidpkcs11.so' 
@@ -125,6 +128,17 @@ def sign_with_cc(data_to_sign):
     raise Exception("Citizen Card not found or private key not accessible.")
 
 
+def display_image(base64_string):
+    try:
+        # Decode the Base64 string into bytes
+        image_bytes = base64.b64decode(base64_string)
+        
+        # Load and display the image
+        image = Image.open(io.BytesIO(image_bytes))
+        image.show()
+    
+    except Exception as e:
+        print(f"Error displaying image: {e}")
 
 
 def main_menu():
@@ -137,7 +151,8 @@ def main_menu():
         print("2. Validate issuer_signature")
         print("3. Validate owner_signature")
         print("4. Validate commitments")
-        print("5. Exit")
+        print("5. Check data")
+        print("6. Exit")
         choice = input("Choose an option (1-4): ")
           
         if choice == "1":
@@ -217,9 +232,26 @@ def main_menu():
                 print("Data integrity compromised.")
 
 
-
-
         elif choice == "5":
+            if dcc_data == {}:
+                print("Need to load dcc_min!!")
+                continue
+
+            attributes = dcc_data["identity_attributes"]
+
+            are_included = True
+            for at in attributes:
+                value = at["value"][0]
+                label = at["label"]
+
+                if label == "image_bytes":
+                    display_image(value)
+                    continue
+
+                print(label, ": ", value)
+
+
+        elif choice == "6":
             print("Exiting the program. Goodbye!")
             sys.exit(0)
         else:

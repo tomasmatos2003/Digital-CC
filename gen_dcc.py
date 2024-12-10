@@ -85,7 +85,6 @@ def start_server():
 
                         # Write the 'dcc' part into a JSON file
                         dcc_data = json_data["dcc"]
-                        public_key = dcc_data["public_key"]["value"]
 
 
                         # Sign the DCC using issuer's private key
