@@ -114,12 +114,19 @@ def main_menu():
 
                     attributes = dcc_data["identity_attributes"]
                     labels = [dic["label"] for dic in attributes]
-
+                    civilian_id_number = ""
                     to_remove = [] 
+                    idx = 0
                     for label in labels:
+
+                        if label == "civilian_id_number":
+                            civilian_id_number = attributes[idx]["value"]
+                            continue
                         response = input(f"  Remove attribute '{label}'? (y/n)").strip()
                         if response.lower() == "y":
                             to_remove.append(label)
+
+                        idx += 1
 
                     new_labels = [label for label in labels if label not in to_remove]
 
@@ -152,7 +159,7 @@ def main_menu():
                         "timestamp" : timestamp,
                         "description": "RSA with SHA-1 PKCS#1 v1.5, using the Citizen Card private key for signing."  
                     }
-                    with open(f'dcc_min.json', 'w') as json_file:
+                    with open(f'dcc_min_{civilian_id_number}.json', 'w') as json_file:
                         json.dump(dcc_min, json_file, indent=4)
 
 

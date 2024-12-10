@@ -223,7 +223,7 @@ def main_menu():
                 commit = create_commitment(label, value, mask )
                 
                 if commit not in commitments:
-                    print("Changed -> ", commit)
+                    print("Changed -> ", value, " or ", label)
                     are_included = False
 
             if are_included:
