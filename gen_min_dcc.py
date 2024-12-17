@@ -158,7 +158,7 @@ def main_menu():
                     dcc_min["owner_signature"] = {
                         "value": signature.hex(),  
                         "timestamp" : timestamp,
-                        "description": "RSA with SHA-1 PKCS#1 v1.5, using the Citizen Card private key for signing."  
+                        "description": "RSA, using the Citizen Card private key for signing."  
                     }
                     with open(f'min_dccs/dcc_min_{civilian_id_number}.json', 'w') as json_file:
                         json.dump(dcc_min, json_file, indent=4)

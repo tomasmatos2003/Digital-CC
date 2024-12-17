@@ -47,7 +47,7 @@ def sign_with_issuer_key(private_key, data_to_sign):
     full_sign = {
         "value": signature.hex(),  # Convert binary signature to hex
         "timestamp": datetime.now(timezone.utc).isoformat(),  # Current UTC timestamp
-        "description": "Issuer signature using SHA-256 and RSA-PKCS1v1.5"
+        "description": "Issuer signature using SHA-512 and RSA-PKCS1v1.5"
     }
 
     return full_sign
