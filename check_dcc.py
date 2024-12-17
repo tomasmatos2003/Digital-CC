@@ -6,12 +6,8 @@ from pyasn1.codec.der.decoder import decode
 from cryptography.x509 import load_pem_x509_certificate
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import padding
-from cryptography.hazmat.primitives.asymmetric.padding import PKCS1v15
 from cryptography.hazmat.primitives.asymmetric.utils import Prehashed
 import hashlib
-from datetime import datetime, timezone
-from cryptography.hazmat.primitives.asymmetric import padding
-from cryptography.hazmat.primitives.hashes import SHA256
 from cryptography.hazmat.primitives.serialization import load_pem_public_key
 from PIL import Image
 import io
@@ -32,12 +28,11 @@ def verify_signature(public_key_pem, data_to_verify, signature):
         # Load the public key from PEM format
         public_key = load_pem_public_key(public_key_pem.encode('utf-8'))
 
-        # Verify the signature using SHA256 and PKCS1v15 padding
         public_key.verify(
             signature,
             data_to_verify,
-            PKCS1v15(),
-            SHA256()
+            padding.PKCS1v15(),
+            hashes.SHA256()
         )
         return True
     except Exception as e:
@@ -47,9 +42,7 @@ def verify_signature(public_key_pem, data_to_verify, signature):
 
 
 def validate_issuer_signature(issuer_sign, issuer_cert, dcc_data):
-    """
-    Validate the issuer's signature using the issuer's public key extracted from the certificate.
-    """
+ 
     try:
         issuer_signature = bytes.fromhex(issuer_sign)  
         issuer_cert_pem = issuer_cert.encode('utf-8') 
@@ -85,10 +78,7 @@ def validate_issuer_signature(issuer_sign, issuer_cert, dcc_data):
 
 def display_image(base64_string):
     try:
-        # Decode the Base64 string into bytes
-        image_bytes = base64.b64decode(base64_string)
-        
-        # Load and display the image
+        image_bytes = base64.b64decode(base64_string)        
         image = Image.open(io.BytesIO(image_bytes))
         image.show()
     
@@ -114,7 +104,7 @@ def main_menu():
 
             try:
                 json_name = input("-- Load a DCC (json): ").strip()
-                #json_name = "dcc_min.json" 
+
                 with open("min_dccs/"+json_name, 'r') as json_file:
                     dcc_data = json.load(json_file)
             except FileNotFoundError:

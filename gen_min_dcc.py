@@ -19,13 +19,10 @@ def derive_mask(password, attribute_name):
     return hashlib.sha1(f"{password}{attribute_name}".encode()).hexdigest()
 
 def validate_issuer_signature(issuer_sign, issuer_cert, dcc_data):
-    """
-    Validate the issuer's signature using the issuer's public key extracted from the certificate.
-    """
+ 
     try:
-        # Extract data to validate
-        issuer_signature = bytes.fromhex(issuer_sign)  # Convert hex signature back to bytes
-        issuer_cert_pem = issuer_cert.encode('utf-8')  # Certificate as PEM string
+        issuer_signature = bytes.fromhex(issuer_sign)  
+        issuer_cert_pem = issuer_cert.encode('utf-8')  
 
         # Extract public key from issuer's certificate
         issuer_cert = load_pem_x509_certificate(issuer_cert_pem)
@@ -60,10 +57,7 @@ def validate_issuer_signature(issuer_sign, issuer_cert, dcc_data):
     
 
 def sign_with_cc(data_to_sign):
-    """
-    Signs data using the Citizen Card's authentication key to verify possession.
-    """
-
+   
     slots = pkcs11.getSlotList()
 
     for slot in slots:

@@ -23,9 +23,7 @@ gen_dcc_port = 65432
 
 
 def create_dcc(cc_data):
-    """
-    Formats the retrieved Citizen Card data into a Digital Commitment Credential (DCC).
-    """
+    
 
     def derive_mask(password, attribute_name):
         return hashlib.sha1(f"{password}{attribute_name}".encode()).hexdigest()
@@ -155,9 +153,8 @@ def send_receive_dictionary(dictionary):
                     break
                 buffer += chunk
 
-            # Decode and process the full response
             response_dict = json.loads(buffer.decode('utf-8'))
-            # print(f"Server response: {response_dict}")
+
             print("Received final dcc sucessfully")
 
             return response_dict
@@ -166,9 +163,7 @@ def send_receive_dictionary(dictionary):
         print(f"Error during authentication: {e}")
 
 def validate_issuer_signature(issuer_sign, issuer_cert, dcc_data):
-    """
-    Validate the issuer's signature using the issuer's public key extracted from the certificate.
-    """
+    
     try:
         issuer_signature = bytes.fromhex(issuer_sign)  
         issuer_cert_pem = issuer_cert.encode('utf-8') 
