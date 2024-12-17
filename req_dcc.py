@@ -1,24 +1,16 @@
-from PyKCS11 import PyKCS11, Mechanism, CKM_SHA1_RSA_PKCS
+from PyKCS11 import PyKCS11
 from PyKCS11.LowLevel import *
 import sys
 import socket
 import json
-from cryptography import x509
-from cryptography.x509.oid import NameOID
-from cryptography.hazmat.primitives import serialization
 from pyasn1.codec.der.decoder import decode
-from pyasn1.type.univ import Sequence
 import hashlib
 from cryptography.x509 import load_pem_x509_certificate
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives.asymmetric.utils import Prehashed
-from datetime import datetime, timezone
 import subprocess
 import re
-from PIL import Image
-import io
-import base64
 
 
 lib = '/usr/local/lib/libpteidpkcs11.so' 
@@ -36,20 +28,20 @@ def create_dcc(cc_data):
     """
 
     def derive_mask(password, attribute_name):
-        return hashlib.sha256(f"{password}{attribute_name}".encode()).hexdigest()
+        return hashlib.sha1(f"{password}{attribute_name}".encode()).hexdigest()
 
     def create_commitment(attribute_name, attribute_value, mask):
         combined = f"{attribute_name}{attribute_value}{mask}".encode()
-        return hashlib.sha256(combined).hexdigest()
+        return hashlib.sha1(combined).hexdigest()
 
-    # pseudo_random_password = "securepassword"
-    pseudo_random_password = input("-- Insert a secret: ")
+    # password = "securepassword"
+    password = input("-- Insert a secret: ")
     commitments = []
 
     for label, value in cc_data.items():
         if value is None or label == "public_key_pem" or label == "key_size":
             continue
-        mask = derive_mask(pseudo_random_password, label)
+        mask = derive_mask(password, label)
     
         commitment = create_commitment(label, value, mask)
         commitments.append({
@@ -60,7 +52,7 @@ def create_dcc(cc_data):
 
     dcc = {
         "identity_attributes": commitments,
-        "digest_function": "SHA-256",
+        "digest_function": "SHA-1",
         "public_key": {
             "value": cc_data["public_key_pem"],
             "key_size": cc_data["key_size"]
@@ -193,7 +185,7 @@ def validate_issuer_signature(issuer_sign, issuer_cert, dcc_data):
         serialized_only_commitment = json.dumps(only_commitment, separators=(',', ':')).encode('utf-8')
         
         # Hash the data before verifying the signature
-        digest = hashes.Hash(hashes.SHA256())
+        digest = hashes.Hash(hashes.SHA512())
         digest.update(serialized_only_commitment)
         hashed_data = digest.finalize()
 
@@ -201,7 +193,7 @@ def validate_issuer_signature(issuer_sign, issuer_cert, dcc_data):
             issuer_signature,
             hashed_data,
             padding.PKCS1v15(),
-            Prehashed(hashes.SHA256())
+            Prehashed(hashes.SHA512())
         )
 
         print("Issuer's signature is valid. Data integrity verified.")

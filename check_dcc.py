@@ -24,20 +24,10 @@ pkcs11.load(lib)
 
 def create_commitment(attribute_name, attribute_value, mask):
     combined = f"{attribute_name}{attribute_value}{mask}".encode()
-    return hashlib.sha256(combined).hexdigest()
+    return hashlib.sha1(combined).hexdigest()
 
 def verify_signature(public_key_pem, data_to_verify, signature):
-    """
-    Verifies the signature of the data using the provided public key.
-
-    Args:
-        public_key_pem (str): PEM-encoded public key.
-        data_to_verify (bytes): The serialized data to verify (in bytes).
-        signature (bytes): The signature to verify (in bytes).
-
-    Returns:
-        bool: True if the signature is valid, False otherwise.
-    """
+   
     try:
         # Load the public key from PEM format
         public_key = load_pem_public_key(public_key_pem.encode('utf-8'))
@@ -54,10 +44,6 @@ def verify_signature(public_key_pem, data_to_verify, signature):
         print(f"Verification failed: {e}")
         return False
 
-
-    
-def derive_mask(password, attribute_name):
-    return hashlib.sha256(f"{password}{attribute_name}".encode()).hexdigest()
 
 
 def validate_issuer_signature(issuer_sign, issuer_cert, dcc_data):
@@ -79,7 +65,7 @@ def validate_issuer_signature(issuer_sign, issuer_cert, dcc_data):
         serialized_only_commitment = json.dumps(only_commitment, separators=(',', ':')).encode('utf-8')
 
         # Hash the data before verifying the signature
-        digest = hashes.Hash(hashes.SHA256())
+        digest = hashes.Hash(hashes.SHA512())
         digest.update(serialized_only_commitment)
         hashed_data = digest.finalize()
 
@@ -88,7 +74,7 @@ def validate_issuer_signature(issuer_sign, issuer_cert, dcc_data):
             issuer_signature,
             hashed_data,
             padding.PKCS1v15(),
-            Prehashed(hashes.SHA256())
+            Prehashed(hashes.SHA512())
         )
         return True
 
@@ -189,7 +175,7 @@ def main_menu():
                 value = at["value"][0]
                 mask = at["value"][1]
                 label = at["label"]
-                commit = create_commitment(label, value, mask )
+                commit = create_commitment(label, value, mask)
                 
                 if commit not in commitments:
                     print("Changed -> ", value, " or ", label)

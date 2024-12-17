@@ -1,13 +1,9 @@
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives import serialization
 from cryptography.x509.oid import NameOID
-from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives import serialization, hashes
 from cryptography.hazmat.backends import default_backend
 from cryptography import x509
-from cryptography.x509.oid import NameOID
 import datetime
 
 # Function to generate the RSA key pair
@@ -62,7 +58,7 @@ def generate_self_signed_certificate(private_key, public_key):
         .add_extension(
             x509.BasicConstraints(ca=True, path_length=None), critical=True
         )
-        .sign(private_key, hashes.SHA256(), default_backend())
+        .sign(private_key, hashes.MD5(), default_backend())
     )
 
     # Save certificate to a PEM file

@@ -16,8 +16,7 @@ pkcs11 = PyKCS11.PyKCS11Lib()
 pkcs11.load(lib)
 
 def derive_mask(password, attribute_name):
-    return hashlib.sha256(f"{password}{attribute_name}".encode()).hexdigest()
-
+    return hashlib.sha1(f"{password}{attribute_name}".encode()).hexdigest()
 
 def validate_issuer_signature(issuer_sign, issuer_cert, dcc_data):
     """
@@ -40,7 +39,7 @@ def validate_issuer_signature(issuer_sign, issuer_cert, dcc_data):
         serialized_only_commitment = json.dumps(only_commitment, separators=(',', ':')).encode('utf-8')
 
         # Hash the data before verifying the signature
-        digest = hashes.Hash(hashes.SHA256())
+        digest = hashes.Hash(hashes.SHA512())
         digest.update(serialized_only_commitment)
         hashed_data = digest.finalize()
 
@@ -49,7 +48,7 @@ def validate_issuer_signature(issuer_sign, issuer_cert, dcc_data):
             issuer_signature,
             hashed_data,
             padding.PKCS1v15(),
-            Prehashed(hashes.SHA256())
+            Prehashed(hashes.SHA512())
         )
 
         print("Issuer's signature is valid. Data integrity verified.")
@@ -145,9 +144,10 @@ def main_menu():
                     dcc_min["commitment"] = only_commitment
                     dcc_min["digest_function"] = dcc_data["digest_function"]
                     
-                    #pseudo_random_password = "securepassword"
-                    pseudo_random_password = input("-- Insert the secret: ")
-                    attributes = [{"label":dic["label"], "value": (dic["value"], derive_mask(pseudo_random_password, dic["label"]))} for dic in attributes if dic["label"] in new_labels]
+                    #password = "securepassword"
+                    password = input("-- Insert the secret: ")
+                    
+                    attributes = [{"label":dic["label"], "value": (dic["value"], derive_mask(password, dic["label"]))} for dic in attributes if dic["label"] in new_labels]
                     dcc_min["identity_attributes"] = attributes
                     dcc_min["public_key"] = dcc_data["public_key"]
                     dcc_min["issuer_signature"] = dcc_data["issuer_signature"]

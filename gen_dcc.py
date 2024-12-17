@@ -34,14 +34,14 @@ def sign_with_issuer_key(private_key, data_to_sign):
     """
 
     # Hash the data first
-    digest = Hash(hashes.SHA256())
+    digest = Hash(hashes.SHA512())
     digest.update(data_to_sign)
     hashed_data = digest.finalize()
 
     signature = private_key.sign(
         hashed_data,
         padding.PKCS1v15(),
-        Prehashed(hashes.SHA256())
+        Prehashed(hashes.SHA512())
     )
 
     full_sign = {
@@ -71,23 +71,18 @@ def start_server():
                 while True:
                     data = conn.recv(1024)
                     
-                    if not data:  # If no data, the client has closed the connection
+                    if not data:  
                         break
                     
-                    buffer += data  # Append the received data to the buffer
+                    buffer += data 
 
-                    # Attempt to parse the complete JSON if possible
                     try:
                         json_data = json.loads(buffer.decode('utf-8'))
                         # print(f"Received data: {json_data["dcc"]}")
                         print("Received pré-dcc sucessfully")
 
-
-                        # Write the 'dcc' part into a JSON file
                         dcc_data = json_data["dcc"]
 
-
-                        # Sign the DCC using issuer's private key
                         issuer_private_key = load_issuer_private_key('issuer/private_key.pem')
 
                         only_commitment = []
