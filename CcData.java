@@ -38,7 +38,6 @@ public class CcData {
 
             if (reader.isCardPresent()) {
                 try {
-                    // Get card details
                     PTEID_EIDCard card = reader.getEIDCard();
                     PTEID_EId eid = card.getID();
                     
@@ -46,14 +45,12 @@ public class CcData {
                    
 
                     for (long i = 0; i < certs.countAll(); i++) {
-                        // Get the cert object (ensure the correct type, here we assume it provides getCert())
-                        PTEID_Certificate cert = certs.getCert(i); // Retrieve certificate at index i (check method signature)
+                        PTEID_Certificate cert = certs.getCert(i);
                         byte[] certBytes = cert.getCertData().GetBytes();
                         CertificateFactory factory = CertificateFactory.getInstance("X.509");
                         InputStream certInputStream = new ByteArrayInputStream(certBytes);
                         Certificate certificate = factory.generateCertificate(certInputStream);
 
-                        // Extract the public key from the certificate
                         PublicKey publicKey = certificate.getPublicKey();
                         
                         String pemKey = exportToPEM(publicKey);
@@ -67,7 +64,6 @@ public class CcData {
                     }
 
 
-                    // Retrieve personal information
                     String nome = eid.getGivenName();
                     String sobrenome = eid.getSurname();
                     String nrCC = eid.getDocumentNumber();
@@ -90,18 +86,14 @@ public class CcData {
                     String surnameFather = eid.getSurnameFather();
                     String givenNameMother = eid.getGivenNameMother();
                     String surnameMother = eid.getSurnameMother();
-                    String parents = eid.getParents();  // Assuming this returns a string
+                    String parents = eid.getParents(); 
                     PTEID_Photo photoObj = eid.getPhotoObj();
-
-                    // Retrieve the photo in different formats
-                    PTEID_ByteArray praw = photoObj.getphotoRAW(); // JPEG2000 format
-                    PTEID_ByteArray ppng = photoObj.getphoto(); // PNG format
+                    PTEID_ByteArray praw = photoObj.getphotoRAW(); 
+                    PTEID_ByteArray ppng = photoObj.getphoto(); 
                     byte[] bytes = ppng.GetBytes();
                     String base64Image = Base64.getEncoder().encodeToString(bytes);
 
-                    // saveImage(bytes, "photo.png", "PNG");
 
-                    // Print all the retrieved information
                     System.out.println("Name: " + nome);
                     System.out.println("Surname: " + sobrenome);
                     System.out.println("Document Number: " + nrCC);
@@ -167,8 +159,6 @@ public class CcData {
 
         } catch (Exception e) {
             System.out.println("error: An error occurred while exporting the public key to PEM");
-
-            // System.err.println("An error occurred while exporting the public key to PEM:");
             e.printStackTrace();
             return null;
         }

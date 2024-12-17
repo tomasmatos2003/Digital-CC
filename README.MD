@@ -20,6 +20,5 @@ python3 req_dcc.py
 python3 gen_min_dcc.py 
 
 #### 5
-ython3 check_dcc.py 
-
+python3 check_dcc.py 
 

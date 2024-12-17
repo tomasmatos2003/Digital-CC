@@ -88,7 +88,7 @@ def start_server():
 
 
                         # Sign the DCC using issuer's private key
-                        issuer_private_key = load_issuer_private_key('dcc_issuer/private_key.pem')
+                        issuer_private_key = load_issuer_private_key('issuer/private_key.pem')
 
                         only_commitment = []
                         for att in dcc_data["identity_attributes"]:
@@ -99,7 +99,7 @@ def start_server():
                         issuer_signature = sign_with_issuer_key(issuer_private_key, serialized_only_commitment)
                             
                         # Load issuer's self-signed certificate
-                        issuer_cert = load_issuer_certificate('dcc_issuer/self_signed_certificate.pem')
+                        issuer_cert = load_issuer_certificate('issuer/self_signed_certificate.pem')
 
                         dcc_data["issuer_signature"] = issuer_signature
                         dcc_data["issuer_signature"]["certificate"] = issuer_cert

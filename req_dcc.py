@@ -42,8 +42,8 @@ def create_dcc(cc_data):
         combined = f"{attribute_name}{attribute_value}{mask}".encode()
         return hashlib.sha256(combined).hexdigest()
 
-    pseudo_random_password = "securepassword"
-
+    # pseudo_random_password = "securepassword"
+    pseudo_random_password = input("-- Insert a secret: ")
     commitments = []
 
     for label, value in cc_data.items():
@@ -191,7 +191,7 @@ def validate_issuer_signature(issuer_sign, issuer_cert, dcc_data):
         only_commitment.append(dcc_data["public_key"])
 
         serialized_only_commitment = json.dumps(only_commitment, separators=(',', ':')).encode('utf-8')
-        print(serialized_only_commitment)
+        
         # Hash the data before verifying the signature
         digest = hashes.Hash(hashes.SHA256())
         digest.update(serialized_only_commitment)
@@ -238,7 +238,7 @@ def main_menu():
                 if verify_issuer:
                     print("DCC is valid and signed by the trusted issuer.")
 
-                    with open(f'dcc_{final_dcc['identity_attributes'][12]['value']}.json', 'w') as json_file:
+                    with open(f'dccs/dcc_{final_dcc['identity_attributes'][12]['value']}.json', 'w') as json_file:
                         json.dump(final_dcc, json_file, indent=4)
 
                 else:

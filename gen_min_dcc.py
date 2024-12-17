@@ -99,7 +99,7 @@ def main_menu():
         if choice == "1":
             try:
                 json_name = input("     Load a DCC (json): ").strip()
-                with open(json_name, 'r') as json_file:
+                with open("dccs/"+json_name, 'r') as json_file:
                     dcc_data = json.load(json_file)
                 
                 print("DCC loaded successfully.")
@@ -145,7 +145,8 @@ def main_menu():
                     dcc_min["commitment"] = only_commitment
                     dcc_min["digest_function"] = dcc_data["digest_function"]
                     
-                    pseudo_random_password = "securepassword"
+                    #pseudo_random_password = "securepassword"
+                    pseudo_random_password = input("-- Insert the secret: ")
                     attributes = [{"label":dic["label"], "value": (dic["value"], derive_mask(pseudo_random_password, dic["label"]))} for dic in attributes if dic["label"] in new_labels]
                     dcc_min["identity_attributes"] = attributes
                     dcc_min["public_key"] = dcc_data["public_key"]
@@ -159,7 +160,7 @@ def main_menu():
                         "timestamp" : timestamp,
                         "description": "RSA with SHA-1 PKCS#1 v1.5, using the Citizen Card private key for signing."  
                     }
-                    with open(f'dcc_min_{civilian_id_number}.json', 'w') as json_file:
+                    with open(f'min_dccs/dcc_min_{civilian_id_number}.json', 'w') as json_file:
                         json.dump(dcc_min, json_file, indent=4)
 
 

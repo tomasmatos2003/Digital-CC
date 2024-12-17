@@ -40,17 +40,16 @@ def generate_rsa_key_pair():
     return private_key, public_key
 
 
-# Function to generate a self-signed certificate
 def generate_self_signed_certificate(private_key, public_key):
     subject = x509.Name([
-        x509.NameAttribute(NameOID.COUNTRY_NAME, "US"),
-        x509.NameAttribute(NameOID.STATE_OR_PROVINCE_NAME, "California"),
-        x509.NameAttribute(NameOID.LOCALITY_NAME, "San Francisco"),
-        x509.NameAttribute(NameOID.ORGANIZATION_NAME, "My Company"),
-        x509.NameAttribute(NameOID.COMMON_NAME, "mycompany.com"),
+        x509.NameAttribute(NameOID.COUNTRY_NAME, "PT"),
+        x509.NameAttribute(NameOID.STATE_OR_PROVINCE_NAME, "Aveiro"),
+        x509.NameAttribute(NameOID.LOCALITY_NAME, "Aveiro"),
+        x509.NameAttribute(NameOID.ORGANIZATION_NAME, "DETI"),
+        x509.NameAttribute(NameOID.COMMON_NAME, "deti.pt"),
     ])
 
-    issuer = subject  # For self-signed certificates, issuer is the same as subject
+    issuer = subject 
 
     certificate = (
         x509.CertificateBuilder()
@@ -72,22 +71,9 @@ def generate_self_signed_certificate(private_key, public_key):
     print("Self-signed certificate saved to self_signed_certificate.pem")
 
 
-# Function to sign data (for DCC)
-def sign_data(private_key, data):
-    signature = private_key.sign(
-        data.encode(),
-        padding.PKCS1v15(),
-        hashes.SHA256()
-    )
-    return signature
-
-
-# Main function to execute the generation and save the keys and certificate
 def main():
-    # Step 1: Generate RSA key pair
     private_key, public_key = generate_rsa_key_pair()
 
-    # Step 2: Generate and save self-signed certificate
     generate_self_signed_certificate(private_key, public_key)
 
 if __name__ == "__main__":

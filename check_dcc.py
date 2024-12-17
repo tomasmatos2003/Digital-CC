@@ -65,11 +65,9 @@ def validate_issuer_signature(issuer_sign, issuer_cert, dcc_data):
     Validate the issuer's signature using the issuer's public key extracted from the certificate.
     """
     try:
-        # Extract data to validate
-        issuer_signature = bytes.fromhex(issuer_sign)  # Convert hex signature back to bytes
-        issuer_cert_pem = issuer_cert.encode('utf-8')  # Certificate as PEM string
+        issuer_signature = bytes.fromhex(issuer_sign)  
+        issuer_cert_pem = issuer_cert.encode('utf-8') 
 
-        # Extract public key from issuer's certificate
         issuer_cert = load_pem_x509_certificate(issuer_cert_pem)
         issuer_public_key = issuer_cert.public_key()
 
@@ -98,35 +96,6 @@ def validate_issuer_signature(issuer_sign, issuer_cert, dcc_data):
         print(f"Failed to validate issuer's signature: {e}")
         return False
     
-
-def sign_with_cc(data_to_sign):
-    """
-    Signs data using the Citizen Card's authentication key to verify possession.
-    """
-
-    slots = pkcs11.getSlotList()
-
-    for slot in slots:
-        token_info = pkcs11.getTokenInfo(slot)
-        if 'CARTAO DE CIDADAO' in token_info.label:
-            session = pkcs11.openSession(slot)
-            try:
-                priv_key = session.findObjects([
-                    (CKA_CLASS, CKO_PRIVATE_KEY),
-                    (CKA_LABEL, 'CITIZEN AUTHENTICATION KEY')
-                ])[0]
-
-                mechanism = Mechanism(CKM_SHA1_RSA_PKCS)
-                signature = session.sign(priv_key, data_to_sign, mechanism)
-                session.closeSession()
-
-                return bytes(signature), datetime.now(timezone.utc).isoformat()
-            except Exception as e:
-                session.closeSession()
-                raise Exception(f"Failed to sign data: {e}")
-
-    raise Exception("Citizen Card not found or private key not accessible.")
-
 
 def display_image(base64_string):
     try:
@@ -160,7 +129,7 @@ def main_menu():
             try:
                 json_name = input("-- Load a DCC (json): ").strip()
                 #json_name = "dcc_min.json" 
-                with open(json_name, 'r') as json_file:
+                with open("min_dccs/"+json_name, 'r') as json_file:
                     dcc_data = json.load(json_file)
             except FileNotFoundError:
                 print(f"File '{json_name}' not found. Please try again.")
