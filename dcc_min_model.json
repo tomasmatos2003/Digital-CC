@@ -1,0 +1,77 @@
+{
+    "commitment": [],
+    "digest_function": "",
+    "identity_attributes": [
+        {
+            "label": "civilian_id_number",
+            "value": [
+                "",
+                ""
+            ]
+        },
+        {
+            "label": "health_number",
+            "value": [
+                "",
+                ""
+            ]
+        },
+        {
+            "label": "issuing_entity",
+            "value": [
+                "",
+                ""
+            ]
+        },
+        {
+            "label": "local_of_request",
+            "value": [
+                "",
+                ""
+            ]
+        },
+        {
+            "label": "father_name",
+            "value": [
+                "",
+                ""
+            ]
+        },
+        {
+            "label": "mother_name",
+            "value": [
+                "",
+                ""
+            ]
+        },
+        {
+            "label": "parents",
+            "value": [
+                "",
+                ""
+            ]
+        },
+        {
+            "label": "image_bytes",
+            "value": [
+                "",
+                ""
+            ]
+        }
+    ],
+    "public_key": {
+        "value": "",
+        "key_size": ""
+    },
+    "issuer_signature": {
+        "value": "",
+        "timestamp": "",
+        "description": "",
+        "certificate": ""
+    },
+    "owner_signature": {
+        "value": "",
+        "timestamp": "",
+        "description": ""
+    }
+}

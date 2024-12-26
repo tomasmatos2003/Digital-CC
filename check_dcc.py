@@ -168,7 +168,7 @@ def main_menu():
                 commit = create_commitment(label, value, mask)
                 
                 if commit not in commitments:
-                    print("Changed -> ", value, " or ", label)
+                    print("Changed -> ", value, " (value) or ", label, " (label) or ", mask , " (mask) ")
                     are_included = False
 
             if are_included:
@@ -184,7 +184,6 @@ def main_menu():
 
             attributes = dcc_data["identity_attributes"]
 
-            are_included = True
             for at in attributes:
                 value = at["value"][0]
                 label = at["label"]

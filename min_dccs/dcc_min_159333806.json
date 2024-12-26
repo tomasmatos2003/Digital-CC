@@ -29,7 +29,35 @@
             "label": "civilian_id_number",
             "value": [
                 "159333806",
-                "93aff7945a73bd97a7282bee9af45627206f7833"
+                "93aff7945a73bd97a7ss282bee9af45627206f7833"
+            ]
+        },
+        {
+            "label": "health_number",
+            "value": [
+                "272124302",
+                "96d7b335532a05581dss65db0a60135acc2217f131"
+            ]
+        },
+        {
+            "label": "issuing_entity",
+            "value": [
+                "Rep\u00fablica Portuguesa",
+                "193b6437b42a61be8ec8f5a869c33779660b39e9"
+            ]
+        },
+        {
+            "label": "local_of_request",
+            "value": [
+                "CRCiv. Seia",
+                "fdd0b587d0289711f20f46eb703c67e2954345e5"
+            ]
+        },
+        {
+            "label": "father_name",
+            "value": [
+                "JOS\u00c9 MANUEL DE ALMEIDA MATOS",
+                "37a6e43fce04a56c822922166150ab09dc1debc3"
             ]
         },
         {
@@ -60,13 +88,13 @@
     },
     "issuer_signature": {
         "value": "97d2aa9e1ba415194f0c7704e6fe71d3ebd08c31b2568437e55a6c9998c8030e1e12e9b6e63bbf45819569c443e60606e080c945b1ed47a1c480cc9b005b6b1bdb699ced283fb4ab081b52b47be25ba5de3e9284ce3c0ab688085439de2c17b0ef5d87f5fdb29c53a4727d345201a8e361a1608f8d1e64a43baaf56ed3fa17e63d1538dc7ff2cb5e1dc771ca4fea729ffd684d3b17d130b37c9dbe9a9fd02e6b17e9cbc0ebc558061261b840db0d05e8c9ef45b7f5a4eb6a607bcef4cc5b236d5143c9d52d343ad8c9f84ecf309b3f68e36ffe2439abb6fe2caff3a2d5760df17418052e300e547c3f9fb43d0b38590c9dad73efd5f6c0a731f6b3652ea9e106",
-        "timestamp": "2024-12-17T19:25:52.308692+00:00",
+        "timestamp": "2024-12-18T14:39:06.843566+00:00",
         "description": "Issuer signature using SHA-512 and RSA-PKCS1v1.5",
         "certificate": "-----BEGIN CERTIFICATE-----\nMIIDQTCCAimgAwIBAgIUK7c1PCIAsFdqVXYTS7oNULFk7PYwDQYJKoZIhvcNAQEL\nBQAwUDELMAkGA1UEBhMCUFQxDzANBgNVBAgMBkF2ZWlybzEPMA0GA1UEBwwGQXZl\naXJvMQ0wCwYDVQQKDARERVRJMRAwDgYDVQQDDAdkZXRpLnB0MB4XDTI0MTIxNzE3\nNTMwNVoXDTI1MTIxNzE3NTMwNVowUDELMAkGA1UEBhMCUFQxDzANBgNVBAgMBkF2\nZWlybzEPMA0GA1UEBwwGQXZlaXJvMQ0wCwYDVQQKDARERVRJMRAwDgYDVQQDDAdk\nZXRpLnB0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyz0z/VHfugFV\n+LGnK1gmp8fQgWBvXvxf90zwvMikBAwnTlaWlntm+GICHjphoknjPZh3P3xczDxW\n2bao0SuuCFpUd0Y3OptwhiSgDRdO97U5K6VSDWlLVPhkAH8Sz8uH4yQKX+yKWgiE\nV0BYLo4JDOSkYKL5kPa9sD/AD3GzAMuN5bV3BY+sEK2cn+z5XorCmp7h2X7tf2gL\n4TpETcASuE7y4L6PP8FOhT98GoS1XrshN6RchDslLIfoEaQiHBm6isz2O/KsrjCV\nhyujDqSXt95+7omzRjzyw9lqAmveqDGFKkUgDlVlfXvUq3w0kEqv6lo7jpSijZWD\n5W1ThK34swIDAQABoxMwETAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUA\nA4IBAQCuOQOihiMG2Odx9cCm2zI5hFAH31fzcTbj7PZJPXo3QB5A+Jh1IjQK+mQ8\nIUGuSb6J+LdU+nEC24N2S6r1YXdmFj9VCD2DqD9hB2ZpfHMgozHVYox81M3hs2WK\nSBq0q482eolxOSHUF+WEEB4IoFWFcA6KOfeLxkhNcOtxBGw8bfynz/qjywDI46KL\nn/tsdsMUCc7d0VSwFqRikL7lHVLHmHHEXl+Rz7BbBdaOphmBq7v6wzZchPZLnP5v\njSK7idevwcmDYqocfmuljRruj2/RMQaBEj0gdFIRnePDDXhL823ZuDQcqOnUgOKp\nCD+LkYWzuGk0qbYmEvPuO+4japwg\n-----END CERTIFICATE-----\n"
     },
     "owner_signature": {
-        "value": "5b159f589797f5772e2e2671c834a878ba19225d7444c5f7b100782cb6f9dd6694faa41874020af492faf843957344ce7289796a6e6684decdeca345706f5e7ef072aa2ac71a0a5b6baba0166042fd28cd83fab2d9eb172e44572ae6f44f81cfcccceec26ceec10195ee5f021c180ff2b013bacf1ce2fd186ac9dea38967f2eae1362c8c1205cbf8cf6e4efbbbd4e21128bcfda48ca25e5dd4fe9ddfccab801d2a65483247988158fc4e8e7b8c9b3d2682e06afd5c964d72d47a2c8339e42dd78c204432e0bf28549580bc4bb86906c8eb5ae29d0a141c5a9648478e164d0c0a0843d5ce3ce594468a597fe81c52e25e90877f3b3e1cbdf9f52514ddc34d61cfc56b2e85f136031edf14c577320fcd23703b8d14677a0c820d8ea2e38718359fbb0ab7ad9338ed8c347056bfab6f862a797e7e02bccecb9a11f7f61bf0ff5b2b3eb8a9789c6c8d041737aaa8f702b683a43d4872ff25f2fdae353d1237af8e9c0af6ec0b1aad6122a2fc00e4cc72b72c68d5662873b69527a4740d4f865fd1ec",
-        "timestamp": "2024-12-17T19:26:32.395608+00:00",
+        "value": "5ba99a084df8697bbb92e481de8de0b08e786206df65bd0ada3b08fe1d58f98081130712a35f6caea515bb84360f00bcefa4324d509f144f2ed6a2f42aaf4e113ac699883119447a4c94b79218f5cd0227d28c3107e2e2477afef5520a2c7973e7e4389f000d1c484835ce558a6a44c1457abd3102e759d6c9652164c27aa2e951da9d126dcfdfc06b47e18a643abe569185a860070a46c3ae56fd4d983fea07e5f373efc57bcc378eb99412669fa4c825ae2eafc1b708b130c76329040a4c67607bd876c12a816d901981cacda87565e49ccf19ecc94c3ce92c333da4a72ef61400bb84a3d21df6697ca06058d2e0f42c18daf5b8732d59e8781306474c935ad1a709d3c99b56b811104f52cea2a737a6f7cdd1c1edcf293481676bd17b8b8b2c671b1c7fb659de7e0c366f3438351ee29fc1d50600d08727bc87fb7d2aaa6bee55c2960e9484e54df2244679f84f29b055ea5d2ae9d7373d6789e7f067d74ba1179fc90b01aa88297043ada6de070e528df0be6606ac0ee8b6c7e45e5844d8",
+        "timestamp": "2024-12-18T14:39:38.198867+00:00",
         "description": "RSA, using the Citizen Card private key for signing."
     }
 }

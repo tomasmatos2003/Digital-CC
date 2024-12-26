@@ -1,0 +1,125 @@
+{
+    "identity_attributes": [
+        {
+            "label": "name",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "surname",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "document_number",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "gender",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "date_of_birth",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "document_version",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "document_type",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "validity_start_date",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "nationality",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "document_pan",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "validity_end_date",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "height",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "civilian_id_number",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "tax_number",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "social_security_number",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "health_number",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "issuing_entity",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "local_of_request",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "father_name",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "mother_name",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "parents",
+            "value": "",
+            "commitment": ""
+        },
+        {
+            "label": "image_bytes",
+            "value": "",
+            "commitment": ""
+        }
+    ],
+    "digest_function": "",
+    "public_key": {
+        "value": "",
+        "key_size": "3072"
+    },
+    "issuer_signature": {
+        "value": "",
+        "timestamp": "",
+        "description": "",
+        "certificate": ""
+    }
+}
